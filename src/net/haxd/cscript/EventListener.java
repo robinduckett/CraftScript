@@ -23,17 +23,23 @@ public class EventListener implements Listener {
         Object player = Context.javaToJS(event.getPlayer(), plugin.scope);
         Object args[] = { jsEvent, player };
 
-        Object scopeGet = plugin.scope.get("on" + sevent, plugin.scope);
-        Function func = (Function) scopeGet;
-        func.call(plugin.engine, plugin.scope, plugin.scope, args);
+        callFunction("on" + sevent, args);
+    }
+
+    public void callFunction(String function, Object args[]) {
+        Object lambda = plugin.scope.get(function, plugin.scope);
+        Function jsfunction = (Function) lambda;
+        jsfunction.call(plugin.engine, plugin.scope, plugin.scope, args);
     }
 
     @EventHandler
+    @SuppressWarnings("unused")
     public void onPlayerLogin(PlayerLoginEvent event) {
         this.processEvent("PlayerLogin", event);
     }
 
     @EventHandler
+    @SuppressWarnings("unused")
     public void onPlayerCommand(PlayerCommandPreprocessEvent event) {
         this.processEvent("PlayerCommand", event);
     }

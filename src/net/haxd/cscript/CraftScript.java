@@ -21,8 +21,7 @@ public class CraftScript extends JavaPlugin {
         getLogger().info("Error: " + e.getMessage());
     }
 
-    public void onLoad() {
-        getLogger().info("CScript Loaded");
+    public void onEnable() {
         engine = Context.enter();
         scope = engine.initStandardObjects();
 
@@ -41,13 +40,11 @@ public class CraftScript extends JavaPlugin {
         } catch (EcmaError e) {
             printErrorMessage(e);
         }
-    }
 
-    public void onEnable() {
         EventListener eventListener = new EventListener(this);
         getServer().getPluginManager().registerEvents(eventListener, this);
 
-        engine.evaluateString(scope, "if (typeof onEnable !== \"undefined\") onEnable();", "<cmd>", 0, null);
+        eventListener.callFunction("onEnable", null);
     }
 
     public void onDisable() {
