@@ -30,6 +30,7 @@ The `Minecraft` object is a prototype of Backbone.Events and currently the follo
 There is limited Backbone integration and the first script loaded is the Players.js script which maps the player events
 to a Backbone model called Players.
 
-## Credits
+Credits
+=======
 
 * Robin Duckett [&lt;rduckett@specificmedia.com&gt;](mailto:rduckett@specificmedia.com)
