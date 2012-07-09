@@ -21,3 +21,15 @@ The `Minecraft` object is a prototype of Backbone.Events and currently the follo
 * `plugin:disable` - triggered when the plugin is disabled
 * `player:login` - triggered when the player has logged in
 * `player:command` - triggered when the player sends a command
+* `player:join` - triggered when the player joins the world
+* `player:quit` - triggered when the player quits the world
+* `player:respawn` - triggered when the player respawns
+
+### Backbone
+
+There is limited Backbone integration and the first script loaded is the Players.js script which maps the player events
+to a Backbone model called Players.
+
+### Credits
+
+* Robin Duckett [<rduckett@specificmedia.com>](mailto:rduckett@specificmedia.com)
