@@ -2,9 +2,7 @@ package net.haxd.cscript;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerCommandPreprocessEvent;
-import org.bukkit.event.player.PlayerEvent;
-import org.bukkit.event.player.PlayerLoginEvent;
+import org.bukkit.event.player.*;
 import org.mozilla.javascript.Context;
 
 /**
@@ -35,5 +33,23 @@ public class EventListener implements Listener {
     @SuppressWarnings("unused")
     public void onPlayerCommand(PlayerCommandPreprocessEvent event) {
         this.processEvent("PlayerCommand", event);
+    }
+
+    @EventHandler
+    @SuppressWarnings("unused")
+    public void onPlayerJoin(PlayerJoinEvent event) {
+        this.processEvent("PlayerJoin", event);
+    }
+
+    @EventHandler
+    @SuppressWarnings("unused")
+    public void onPlayerQuit(PlayerQuitEvent event) {
+        this.processEvent("PlayerQuit", event);
+    }
+
+    @EventHandler
+    @SuppressWarnings("unused")
+    public void onPlayerCommand(PlayerRespawnEvent event) {
+        this.processEvent("PlayerRespawn", event);
     }
 }

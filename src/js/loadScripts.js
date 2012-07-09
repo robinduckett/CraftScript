@@ -19,3 +19,15 @@ function onPlayerLogin(event, player) {
 function onPlayerCommand(event, player) {
     Minecraft.trigger("player:command", event, player);
 }
+
+function onPlayerJoin(event, player) {
+    Minecraft.trigger("player:join", event, player);
+}
+
+function onPlayerQuit(event, player) {
+    Minecraft.trigger("player:quit", event, player);
+}
+
+function onPlayerRespawn(event, player) {
+    Minecraft.trigger("player:respawn", event, player);
+}
