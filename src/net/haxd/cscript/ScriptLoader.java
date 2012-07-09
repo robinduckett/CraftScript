@@ -21,8 +21,8 @@ public class ScriptLoader {
         if (dir.isDirectory()) {
             String[] children = dir.list();
 
-            for (int i = 0; i < children.length; i++) {
-                getDir(new File(dir, children[i]));
+            for (String child : children) {
+                getDir(new File(dir, child));
             }
         } else {
             try {
