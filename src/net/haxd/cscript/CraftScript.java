@@ -33,6 +33,7 @@ public class CraftScript extends JavaPlugin {
             InputStream backbone = this.getClassLoader().getResourceAsStream("backbone.js");
 
             scope.put("console", scope, getLogger());
+            scope.put("plugin", scope, this);
 
             engine.evaluateReader(scope, new InputStreamReader(underscore), "underscore.js", 0, null);
             engine.evaluateReader(scope, new InputStreamReader(backbone), "backbone.js", 0, null);

@@ -8,11 +8,17 @@ var Player = Backbone.Model.extend({
     }
 });
 
+var PlayerCollection = Backbone.Collection.extend({
+   model: Player
+})
+
 var Players = Backbone.Model.extend({
     initialize: function() {
-        this.set('players', new Backbone.Collection.extend({
-            model: Player
-        }));
+        this.set('players', new PlayerCollection());
+
+        this.get('players').on('add', function() {
+            plugin.getServer().broadcastMessage('Player added');
+        });
 
         Minecraft.on("player:join", this.login, this);
         Minecraft.on("player:quit", this.quit, this);
@@ -43,9 +49,9 @@ var Players = Backbone.Model.extend({
         var players = this.get('players');
 
         if (event.getMessage() == "/plist") {
-            players.each(function(p) {
-                player.sendMessage(p.get('name'));
-            });
+            player.sendMessage(JSON.stringify(players));
+
+            event.setCancelled(true);
         }
     },
 
