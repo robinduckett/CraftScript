@@ -1,7 +1,9 @@
 function MinecraftEvent() {
 
 }
+
 MinecraftEvent.prototype = Backbone.Events;
+
 var Minecraft = new MinecraftEvent();
 
 function onEnable() {
