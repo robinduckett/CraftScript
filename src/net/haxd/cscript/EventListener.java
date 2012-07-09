@@ -32,7 +32,15 @@ public class EventListener implements Listener {
     @EventHandler
     @SuppressWarnings("unused")
     public void onPlayerCommand(PlayerCommandPreprocessEvent event) {
-        this.processEvent("PlayerCommand", event);
+        if (event.getMessage().startsWith("/csreload") && event.getPlayer().isOp()) {
+            plugin.getServer().broadcastMessage("Reloading CraftScript scripts...");
+            plugin.onDisable();
+            plugin.onEnable();
+            plugin.getServer().broadcastMessage("Reloaded CraftScript scripts");
+            event.setCancelled(true);
+        } else {
+            this.processEvent("PlayerCommand", event);
+        }
     }
 
     @EventHandler
@@ -49,7 +57,7 @@ public class EventListener implements Listener {
 
     @EventHandler
     @SuppressWarnings("unused")
-    public void onPlayerCommand(PlayerRespawnEvent event) {
+    public void onPlayerRespawn(PlayerRespawnEvent event) {
         this.processEvent("PlayerRespawn", event);
     }
 }

@@ -26,11 +26,11 @@ public class ScriptLoader {
             }
         } else {
             try {
+                plugin.getServer().broadcastMessage("Loading: " + dir.toString());
                 plugin.engine.evaluateReader(plugin.scope, new FileReader(dir), dir.toString(), 0, null);
             } catch (IOException e) {
                 plugin.getLogger().info("Unable to load script: " + dir.toString());
             }
-
         }
     }
 

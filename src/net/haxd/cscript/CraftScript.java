@@ -55,6 +55,5 @@ public class CraftScript extends JavaPlugin {
     public void onDisable() {
         scriptLoader.callFunction("onDisable", null);
         Context.exit();
-        getLogger().info("CScript Disabled");
     }
 }
