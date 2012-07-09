@@ -6,7 +6,6 @@ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.mozilla.javascript.Context;
-import org.mozilla.javascript.Function;
 
 /**
  * @author Robin Duckett &lt;rduckett@specificmedia.com&gt;
@@ -23,13 +22,7 @@ public class EventListener implements Listener {
         Object player = Context.javaToJS(event.getPlayer(), plugin.scope);
         Object args[] = { jsEvent, player };
 
-        callFunction("on" + sevent, args);
-    }
-
-    public void callFunction(String function, Object args[]) {
-        Object lambda = plugin.scope.get(function, plugin.scope);
-        Function jsfunction = (Function) lambda;
-        jsfunction.call(plugin.engine, plugin.scope, plugin.scope, args);
+        plugin.scriptLoader.callFunction("on" + sevent, args);
     }
 
     @EventHandler
