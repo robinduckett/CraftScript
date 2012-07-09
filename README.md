@@ -32,4 +32,4 @@ to a Backbone model called Players.
 
 ### Credits
 
-* Robin Duckett [<rduckett@specificmedia.com>](mailto:rduckett@specificmedia.com)
+* Robin Duckett [&lt;rduckett@specificmedia.com&gt;](mailto:rduckett@specificmedia.com)
